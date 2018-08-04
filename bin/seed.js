@@ -13,6 +13,8 @@ const seed = async () => {
     return Comment.create({ ...comment });
   }));
 };
+
+
 seed().catch((error) => {
   db.close();
   console.log(`

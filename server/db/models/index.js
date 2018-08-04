@@ -15,9 +15,6 @@ Comment.belongsTo(Post);
 User.hasMany(Comment);
 Comment.belongsTo(User);
 
-console.log("getting into my models/index.js")
-
-
 module.exports = {
   User,
   Post,
