@@ -1,6 +1,10 @@
 const Sequelize = require('sequelize');
 const pkg = require('../../package.json');
-
-module.exports = new Sequelize(`postgres://localhost:8080/${pkg.name}`, {
+console.log("what is my pkg.name", pkg.name)
+const db = new Sequelize(`postgres://localhost:1337/${pkg.name}`, {
   logging: false,
 });
+
+console.log("getting into db/db.js")
+
+module.exports = db

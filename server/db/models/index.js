@@ -1,5 +1,6 @@
 'use strict'
 
+
 const Comment = require('./comments')
 const User = require('./user')
 const Post = require('./posts')
@@ -13,6 +14,8 @@ Comment.belongsTo(Post);
 
 User.hasMany(Comment);
 Comment.belongsTo(User);
+
+console.log("getting into my models/index.js")
 
 
 module.exports = {

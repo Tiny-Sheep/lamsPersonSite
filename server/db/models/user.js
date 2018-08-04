@@ -24,5 +24,7 @@ const User = db.define('user', {
   },
 });
 
+console.log("getting into my models/users.js")
+
 module.exports = User;
 

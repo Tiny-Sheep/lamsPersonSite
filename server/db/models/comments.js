@@ -14,4 +14,7 @@ const Comment = db.define('comment', {
   },
 });
 
+console.log("getting into my models/comments.js")
+
+
 module.exports = Comment;

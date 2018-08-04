@@ -14,4 +14,7 @@ const Post = db.define('post', {
   },
 });
 
+console.log("getting into my models/posts.js")
+
+
 module.exports = Post;
