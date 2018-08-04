@@ -9,10 +9,37 @@ const seed = async () => {
   });
 
   await Promise.all(commentData.map((comment) => {
-    console.log("what is this comment", comment);
-    return Comment.create({ ...comment });
+    return Comment.create(comment);
   }));
-};
+
+  await Promise.all(userData.map((user) => {
+    return User.create(user)
+  }))
+
+  await Promise.all(postData.map((post) => {
+    return Post.create(post)
+  }))
+
+  const allUsers = await User.findAll()
+  const allPosts = await Post.findAll()
+  const allComment = await Comment.findAll()
+
+  const allUserProm = allUsers.map((user, idx) => {
+    return user.addPost(allPosts[idx])
+  })
+
+  const allPostProm = allPosts.map((post, idx) => {
+    return post.addComment(allComment[idx])
+  })
+
+  const allCommentProm = allComment.map((comment, idx) => {
+    return comment.setUser(allUsers[idx])
+  })
+
+  await Promise.all([...allUserProm, ...allPostProm, ...allCommentProm])
+
+}
+
 
 
 seed().catch((error) => {
@@ -26,4 +53,6 @@ seed().catch((error) => {
     ${error.stack}
 
   `);
-});
+}).then(() => {
+  db.close()
+})
